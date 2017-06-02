@@ -24,9 +24,14 @@
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 	<link rel="shortcut icon" href="favicon.ico">
 
+	<script type="text/javascript" src="{% static "js/jquery-1.8.3.min.js" %}"></script>
+
+	<link type="text/css" rel="stylesheet" href="{% static "css/demo.css" %}">
+
+
+
 	<!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'> -->
 	
-	<!-- Animate.css -->
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="{% static "css/animate.css" %}">
 	<!-- Icomoon Icon Fonts-->
@@ -56,6 +61,7 @@
 					<div class="nav-header">
 						<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
 						<h1 id="fh5co-logo"><a href="index.html">清华大学二校门</a></h1>
+						
 						<!-- 改为根据id获取的-->
 						<nav id="fh5co-menu-wrap" role="navigation">
 							<ul class="sf-menu" id="fh5co-primary-menu">
@@ -75,32 +81,27 @@
 				<div class="desc animate-box">
 					<!-- 改为根据id获取的-->
 					<h2>二校门</h2>
+					<audio src="{% static "music/1.mp3" %}" controls="controls">    您的浏览器不支持 audio 标签。</audio>
 				</div>
 			</div>
 
 		</div>
 
 
-		<div class="fh5co-listing">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-4 col-sm-4 fh5co-item-wrap">
-						<a class="fh5co-listing-item">
-							<img src="images/img-1.jpg" alt="Free HTML5 Bootstrap Template by " class="img-responsive">
-							<div class="fh5co-listing-copy">
-								<h2>Paris</h2>
-								<span class="icon">
-									<i class="icon-chevron-right"></i>
-								</span>
-							</div>
-						</a>
-					</div>
-					<!-- END 3 row -->
-
-
-				</div>
-			</div>
+		<div class="col-md-6 col-md-offset-3 text-center">
+			<p class="p-responsive"> 清华大学二校门，位于清华大学主干道之一的清华路，是清华园内最具代表性的标志性建筑之一，是清华大学的象征。
+	二校门为一座古典优雅的青砖白柱三拱牌坊式建筑，门门额上刻有晚清军机大臣那桐1911年题写的“清华园”大字。站在清华路，北望二校门，可遥看清华大礼堂、日晷和清华学堂等景观。
+	二校门为清华大学最早的主校门，始建于1909年。1933年，校园扩建，园墙外移，有了新的大门(今日的西校门)。此后，这座最早的校门就被称之为“二校门”。1966年8月24日，二校门被“清华大学红卫兵”当作“四旧”推倒、砸毁。1991年清华校庆80周年之际，在清华校友捐助下，二校门得以原址重建。
+春夏秋冬，年年岁岁，时光荏苒，矗立在校园主干道上的二校门，在风雨中，默默见证着清华大学的历史与发展。它不仅仅是清华园的鲜明标志，更是长期以来清华人勤奋求实、荣辱不惊之品格的象征。
+             </p>
 		</div>
+
+		<div class="praise">
+			<span id="praise"><img src="{% static "img/zan.png" %}" id="praise-img" /></span>
+			<span id="praise-txt">1455</span>
+			<span id="add-num"><em>+1</em></span>
+		</div>
+
 
 
 		<div class="fh5co-section">
@@ -109,7 +110,7 @@
 					<div class="col-md-6 fh5co-news">
 						<h3>News</h3>
 						<ul>
-							<li>
+							<!--<li>添加最新评论
 								<a href="#">
 									<span class="fh5co-date">Sep. 10, 2016</span>
 									<h3>Newly done Bridge of London</h3>
@@ -129,13 +130,13 @@
 									<h3>Newly done Bridge of London</h3>
 									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus reprehenderit!</p>
 								</a>
-							</li>
+							</li> -->
 						</ul>
 					</div>
-					<div class="col-md-6 fh5co-testimonial">
+					 <!-- <div class="col-md-6 fh5co-testimonial">
 						<img src="{% static "img/cover_bg_1.jpg" %}" alt="Free HTML5 Bootstrap Template by " class="img-responsive mb20">
 						<img src="{% static "img/cover_bg_1.jpg" %}" alt="Free HTML5 Bootstrap Template by " class="img-responsive">
-					</div>
+					</div>  -->
 				</div>
 			</div>
 		</div>
@@ -144,9 +145,10 @@
 			<div id="footer">
 				<div class="container">
 					<div class="row">
+						
 						<div class="col-md-6 col-md-offset-3 text-center">
-							<audio src="{% static "music/1.mp3" %}">    您的浏览器不支持 audio 标签。</audio>
-							<p>Copyright &copy; 2016.Company name All rights reserved.</p>
+							
+							<p>Copyright &copy; 2017,yml.All rights reserved.</p>
 						</div>
 					</div>
 				</div>
@@ -161,6 +163,36 @@
 	<!-- END fh5co-wrapper -->
 
 	<!-- jQuery -->
+	<script>
+	/* @author:Romey
+	 * 动态点赞
+	 * 此效果包含css3，部分浏览器不兼容（如：IE10以下的版本）
+	*/
+	$(function(){
+		$("#praise").click(function(){
+			var praise_img = $("#praise-img");
+			var text_box = $("#add-num");
+			var praise_txt = $("#praise-txt");
+			var num=parseInt(praise_txt.text());
+			if(praise_img.attr("src") == ("{% static "img/yizan.png" %}")){
+				$(this).html("<img src='/static/img/zan.png' id='praise-img' class='animation' />");
+				praise_txt.removeClass("hover");
+				text_box.show().html("<em class='add-animation'>-1</em>");
+				$(".add-animation").removeClass("hover");
+				num -=1;
+				praise_txt.text(num)
+			}else{
+				$(this).html("<img src='/static/img/yizan.png' id='praise-img' class='animation' />");
+				praise_txt.addClass("hover");
+				text_box.show().html("<em class='add-animation'>+1</em>");
+				$(".add-animation").addClass("hover");
+				num +=1;
+				praise_txt.text(num)
+			}
+		});
+	})
+   </script>
+
 
 
 	<script src="{% static "js/jquery.min.js" %}"></script>
