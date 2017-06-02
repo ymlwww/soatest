@@ -21,5 +21,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^list/$', yml_views.list, name='list'), 
     url(r'^$', yml_views.index),
+    url(r'^map/', yml.views.map),
     url(r'^list/spot/(\d+)/$', yml_views.item, name='item'),
 ]

@@ -11,3 +11,6 @@ def list(request):
 def item(request,a):
     c = int(a)
     return render(request, 'item.html', {'resultlist': c})
+
+def map(request):
+    return render(request, 'map.html')

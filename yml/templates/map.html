@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <style>
+      #right-panel {
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+
+      #right-panel select, #right-panel input {
+        font-size: 15px;
+      }
+
+      #right-panel select {
+        width: 100%;
+      }
+
+      #right-panel i {
+        font-size: 12px;
+      }
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+        float: left;
+        width: 100%;
+        height: 100%;
+      }
+      #right-panel {
+        margin: 20px;
+        border-width: 2px;
+        width: 100%;
+        height: 400px;
+        float: left;
+        text-align: left;
+        padding-top: 0;
+      }
+      #directions-panel {
+        margin-top: 10px;
+        background-color: #FFEE77;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <div id="right-panel">
+    <div>
+    <b>Start:</b>
+    <select id="start">
+      <option value="present_point">当前位置</option>
+      <option value="erxiaomen">二校门</option>
+      <option value="dalitang">大礼堂</option>
+      <option value="xinqhxt">新清华学堂</option>
+      <option value="gzt">工字厅</option>
+      <option value="hetang">荷塘</option>
+      <option value="zongti">综合体育馆</option>
+      <option value="tushuguan">图书馆</option>
+      <option value="ximen">西门</option>
+      <option value="wanrenshitang">万人食堂</option>
+      <option value="zhulou">主楼</option>
+    </select>
+    <br>
+    <b>Waypoints:</b> <br>
+    <i>(Ctrl+Click or Cmd+Click for multiple selection)</i> <br>
+    <select multiple id="waypoints">
+      <option value="erxiaomen">二校门</option>
+      <option value="dalitang">大礼堂</option>
+      <option value="xinqhxt">新清华学堂</option>
+      <option value="gzt">工字厅</option>
+      <option value="hetang">荷塘</option>
+      <option value="zongti">综合体育馆</option>
+      <option value="tushuguan">图书馆</option>
+      <option value="ximen">西门</option>
+      <option value="wanrenshitang">万人食堂</option>
+      <option value="zhulou">主楼</option>
+    </select>
+    <br>
+    <b>End:</b>
+    <select id="end">
+      <option value="erxiaomen">二校门</option>
+      <option value="dalitang">大礼堂</option>
+      <option value="xinqhxt">新清华学堂</option>
+      <option value="gzt">工字厅</option>
+      <option value="hetang">荷塘</option>
+      <option value="zongti">综合体育馆</option>
+      <option value="tushuguan">图书馆</option>
+      <option value="ximen">西门</option>
+      <option value="wanrenshitang">万人食堂</option>
+      <option value="zhulou">主楼</option>
+    </select>
+    <br>
+      <input type="submit" id="submit">
+    </div>
+    <div id="directions-panel"></div>
+    </div>
+    <script>
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: uluru_erxiaomen
+        });
+        var uluru_erxiaomen = {lat: 40.001, lng: 116.3245};
+        var latlng_erxiaomen = new google.maps.LatLng(uluru_erxiaomen.lat,uluru_erxiaomen.lng);
+        var uluru_dalitang = {lat: 40.003713, lng: 116.324420};//1
+        var latlng_dalitang = new google.maps.LatLng(uluru_dalitang.lat,uluru_dalitang.lng);
+        var uluru_xinqhxt = {lat: 40.0017537, lng: 116.3279431};//1
+        var latlng_xinqhxt = new google.maps.LatLng(uluru_xinqhxt.lat,uluru_xinqhxt.lng);
+        var uluru_gzt = {lat: 40.003218, lng: 116.32262};//1
+        var latlng_gzt = new google.maps.LatLng(uluru_gzt.lat,uluru_gzt.lng);
+        var uluru_hetang = {lat: 40.0003532, lng: 116.3191088};//1
+        var latlng_hetang = new google.maps.LatLng(uluru_hetang.lat,uluru_hetang.lng);
+        var uluru_zongti = {lat: 40.0043401, lng: 116.3301787};//1
+        var latlng_zongti = new google.maps.LatLng(uluru_zongti.lat,uluru_zongti.lng);
+        var uluru_tushuguan = {lat: 40.004014, lng: 116.3238716};//1
+        var latlng_tushuguan = new google.maps.LatLng(uluru_tushuguan.lat,uluru_tushuguan.lng);
+        var uluru_ximen = {lat: 39.999998, lng: 116.31589};//1
+        var latlng_ximen = new google.maps.LatLng(uluru_ximen.lat,uluru_ximen.lng);
+        var uluru_wanrenshitang = {lat: 40.0052998, lng: 116.3220334};//1
+        var latlng_wanrenshitang = new google.maps.LatLng(uluru_wanrenshitang.lat,uluru_wanrenshitang.lng);
+        var uluru_zhulou = {lat: 40.0018265, lng: 116.3321044};//1
+        var latlng_zhulou = new google.maps.LatLng(uluru_zhulou.lat,uluru_zhulou.lng);
+        var infoWindow_erxiaomen = new google.maps.InfoWindow({map:map,content:"二校门"});
+            infoWindow_erxiaomen.setPosition(uluru_erxiaomen);
+        var infoWindow_zhulou = new google.maps.InfoWindow({map:map,content:"主楼"});
+            infoWindow_zhulou.setPosition(uluru_zhulou);
+        var infoWindow_dalitang = new google.maps.InfoWindow({map:map,content:"大礼堂"});
+            infoWindow_dalitang.setPosition(uluru_dalitang);
+        var infoWindow_xinqhxt = new google.maps.InfoWindow({map:map,content:"新清华学堂"});
+            infoWindow_xinqhxt.setPosition(uluru_xinqhxt);
+        var infoWindow_gzt = new google.maps.InfoWindow({map:map,content:"工字厅"});
+            infoWindow_gzt.setPosition(uluru_gzt);
+        var infoWindow_hetang = new google.maps.InfoWindow({map:map,content:"荷塘"});
+            infoWindow_hetang.setPosition(uluru_hetang);
+        var infoWindow_zongti = new google.maps.InfoWindow({map:map,content:"综合体育馆"});
+            infoWindow_zongti.setPosition(uluru_zongti);
+        var infoWindow_tushuguan = new google.maps.InfoWindow({map:map,content:"图书馆"});
+            infoWindow_tushuguan.setPosition(uluru_tushuguan);
+        var infoWindow_ximen = new google.maps.InfoWindow({map:map,content:"西门"});
+            infoWindow_ximen.setPosition(uluru_ximen);
+        var infoWindow_wanrenshitang = new google.maps.InfoWindow({map:map,content:"万人食堂"});
+            infoWindow_wanrenshitang.setPosition(uluru_wanrenshitang);
+        var marker_erxiaomen = new google.maps.Marker({
+          position: uluru_erxiaomen,
+          map: map
+        });
+        var marker_zhulou = new google.maps.Marker({
+          position: uluru_zhulou,
+          map: map
+        });
+        var marker_dalitang = new google.maps.Marker({
+          position: uluru_dalitang,
+          map: map
+        });
+        var marker_xinqhxt = new google.maps.Marker({
+          position: uluru_xinqhxt,
+          map: map
+        });
+        var marker_gzt = new google.maps.Marker({
+          position: uluru_gzt,
+          map: map
+        });
+        var marker_hetang = new google.maps.Marker({
+          position: uluru_hetang,
+          map: map
+        });
+        var marker_zongti = new google.maps.Marker({
+          position: uluru_zongti,
+          map: map
+        });
+        var marker_tushuguan = new google.maps.Marker({
+          position: uluru_tushuguan,
+          map: map
+        });
+        var marker_ximen = new google.maps.Marker({
+          position: uluru_ximen,
+          map: map
+        });
+        var marker_wanrenshitang = new google.maps.Marker({
+          position: uluru_wanrenshitang,
+          map: map
+        });
+        var points_dictionary = {'erxiaomen':latlng_erxiaomen,'zhulou':latlng_zhulou,'dalitang':latlng_dalitang,'xinqhxt':latlng_xinqhxt,'gzt':latlng_gzt,'hetang':latlng_hetang,'zongti':latlng_zongti,'tushuguan':latlng_tushuguan,'ximen':latlng_ximen,'wanrenshitang':latlng_wanrenshitang};
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        directionsDisplay.setMap(map);
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            var infoWindow = new google.maps.InfoWindow({map:map,content:"you are here"});
+            infoWindow.setPosition(pos);
+            map.setCenter(pos);
+            var marker_here = new google.maps.Marker({
+              position: pos,
+              map: map
+            });
+            var latlgn_present = new google.maps.LatLng(pos.lat,pos.lng);
+            points_dictionary['present_point'] = latlgn_present;
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+        document.getElementById('submit').addEventListener('click', function() {
+          var start = points_dictionary[document.getElementById('start').value];
+          var end = points_dictionary[document.getElementById('end').value];
+          var waypts = [];
+          var checkboxArray = document.getElementById('waypoints');
+          for (var i = 0; i < checkboxArray.length; i++) {
+          if (checkboxArray.options[i].selected) {
+            waypts.push({
+              location: points_dictionary[checkboxArray[i].value],
+              stopover: true
+            });
+          }
+        }
+          calculateAndDisplayRoute(directionsService, directionsDisplay,start,end,waypts);
+        });
+      }
+
+      function calculateAndDisplayRoute(directionsService, directionsDisplay,origin,destination,waypoints) {
+        directionsService.route({
+          origin: origin,
+          destination: destination,
+          travelMode: 'WALKING',
+          waypoints: waypoints
+        }, function(response, status) {
+          if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+      }
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBir98xXehuI48KdyuGFQiay4r-39UOT28&callback=initMap">
+    </script>
+  </body>
+</html>
