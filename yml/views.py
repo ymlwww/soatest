@@ -24,7 +24,7 @@ def deliver(request):
     re = content.read()
     s = json.loads(re)
     imgurl ="http://13.65.151.139:8000/static/img/1.png"
-    s["requests"]["image"]["content"] = imgurl
+    s["requests"][0]["image"]["content"] = imgurl
     data = urllib2.urlopen(s).read()
     print data
     return HttpResponse(data)
