@@ -27,11 +27,11 @@ def deliver(request):
     vision_client = vision.Client()
     image = vision_client.image(source_uri=uri)
 
-    labels = image.detect_labels()
-    print('Labels:')
+    landmarks = image.detect_landmarks()
+    print('Landmarks:')
 
-    for label in labels:
-        print(label.description)
+    for landmark in landmarks:
+        print(landmark.description)
     return HttpResponse(label.description)
 
     
