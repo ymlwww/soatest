@@ -1,7 +1,8 @@
 #coding:utf-8
 from django.shortcuts import render
 from django.http import HttpResponse
- 
+import urllib2
+import json
 def index(request):
     return render(request, 'index.html')
 
@@ -14,3 +15,29 @@ def item(request,a):
 
 def map(request):
     return render(request, 'map.html')
+
+def deliver(request):
+    url = "https://vision.googleapis.com/v1/images:annotate?key=AIzaSyAyZ_Ss0Xm9Bk_MxcoJ0eMNukiM9xaN-fA"
+    request = "{
+                "requests":[
+                    {
+                    "image":{
+                        "content":"http://13.65.151.139:8000/static/img/1.png"
+                    },
+                    "features":[
+                        {
+                        "type":"LABEL_DETECTION",
+                        "maxResults":1
+                        }
+                    ]
+                    }
+                ]
+                }"
+     s = json.loads(request)
+     imgurl ="http://13.65.151.139:8000/static/img/1.png"
+     s["requests"]["image"]["content"] = imgurl
+     data = urllib2.urlopen(s).read()
+     print data
+     return HttpResponse(data)
+
+    
