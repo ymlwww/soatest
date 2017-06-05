@@ -31,6 +31,8 @@ def deliver(request):
     print('Landmarks:')
 
     for landmark in landmarks:
+        print("landmark")
+        print landmark
         print(landmark.description)
     return HttpResponse(landmark.description)
 
