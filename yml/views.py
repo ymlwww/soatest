@@ -17,7 +17,7 @@ def item(request,a):
 def map(request):
     return render(request, 'map.html')
 
-def detect_labels_uri(request):
+def deliver(request):
     """Detects labels in the file located in Google Cloud Storage or on the
     Web."""
     url ="http://13.65.151.139:8000/static/img/1/1.jpg"
