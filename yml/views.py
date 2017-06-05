@@ -4,6 +4,9 @@ from django.http import HttpResponse
 import urllib2
 import json
 import os
+import argparse
+import io
+from google.cloud import vision
 def index(request):
     return render(request, 'index.html')
 
