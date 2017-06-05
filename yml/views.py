@@ -17,16 +17,18 @@ def item(request,a):
 def map(request):
     return render(request, 'map.html')
 
-def deliver(request):
-    url = "https://vision.googleapis.com/v1/images:annotate?key=AIzaSyAyZ_Ss0Xm9Bk_MxcoJ0eMNukiM9xaN-fA"
-    print os.getcwd()
-    content = open("./yml/static/json/request.json",'r')
-    re = content.read()
-    s = json.loads(re)
-    imgurl ="http://13.65.151.139:8000/static/img/1.png"
-    s["requests"][0]["image"]["content"] = imgurl
-    data = urllib2.urlopen(s).read()
-    print data
-    return HttpResponse(data)
+def detect_labels_uri(request):
+    """Detects labels in the file located in Google Cloud Storage or on the
+    Web."""
+    url ="http://13.65.151.139:8000/static/img/1/1.jpg"
+    vision_client = vision.Client()
+    image = vision_client.image(source_uri=uri)
+
+    labels = image.detect_labels()
+    print('Labels:')
+
+    for label in labels:
+        print(label.description)
+    return HttpResponse(label.description)
 
     
