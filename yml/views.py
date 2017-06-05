@@ -18,7 +18,7 @@ def map(request):
 
 def deliver(request):
     url = "https://vision.googleapis.com/v1/images:annotate?key=AIzaSyAyZ_Ss0Xm9Bk_MxcoJ0eMNukiM9xaN-fA"
-    request = "{
+    content = "{
                 "requests":[
                     {
                     "image":{
@@ -33,7 +33,7 @@ def deliver(request):
                     }
                 ]
                 }"
-     s = json.loads(request)
+     s = json.loads(content)
      imgurl ="http://13.65.151.139:8000/static/img/1.png"
      s["requests"]["image"]["content"] = imgurl
      data = urllib2.urlopen(s).read()
