@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import urllib2
 import json
+import os
 def index(request):
     return render(request, 'index.html')
 
@@ -18,8 +19,10 @@ def map(request):
 
 def deliver(request):
     url = "https://vision.googleapis.com/v1/images:annotate?key=AIzaSyAyZ_Ss0Xm9Bk_MxcoJ0eMNukiM9xaN-fA"
-    content = open("./static/json/request.json")
-    s = json.loads(content)
+    print os.getcwd()
+    content = open("./static/json/request.json"，'r')
+    re = content.read()
+    s = json.loads(re)
     imgurl ="http://13.65.151.139:8000/static/img/1.png"
     s["requests"]["image"]["content"] = imgurl
     data = urllib2.urlopen(s).read()
