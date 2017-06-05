@@ -18,26 +18,12 @@ def map(request):
 
 def deliver(request):
     url = "https://vision.googleapis.com/v1/images:annotate?key=AIzaSyAyZ_Ss0Xm9Bk_MxcoJ0eMNukiM9xaN-fA"
-    content = "{
-                "requests":[
-                    {
-                    "image":{
-                        "content":"http://13.65.151.139:8000/static/img/1.png"
-                    },
-                    "features":[
-                        {
-                        "type":"LABEL_DETECTION",
-                        "maxResults":1
-                        }
-                    ]
-                    }
-                ]
-                }"
-     s = json.loads(content)
-     imgurl ="http://13.65.151.139:8000/static/img/1.png"
-     s["requests"]["image"]["content"] = imgurl
-     data = urllib2.urlopen(s).read()
-     print data
-     return HttpResponse(data)
+    content = open("./static/json/request.json")
+    s = json.loads(content)
+    imgurl ="http://13.65.151.139:8000/static/img/1.png"
+    s["requests"]["image"]["content"] = imgurl
+    data = urllib2.urlopen(s).read()
+    print data
+    return HttpResponse(data)
 
     
