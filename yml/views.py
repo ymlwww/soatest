@@ -33,7 +33,7 @@ def deliver(request):
         print("landmark")
         print landmark
         print(landmark.description)
-        a = dict_for_vision(landmark.description)
+        a = dict_for_vision[landmark.description]
         return HttpResponse(a)
     return HttpResponse("0") 
 
