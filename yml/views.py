@@ -27,3 +27,13 @@ def item(request,a):
 
 def map(request):
     return render(request, 'map.html')    
+
+
+def bashroom(request):
+    return render(request, 'bashroom.html')
+
+def activity(request):
+    return render(request, 'activity.html')
+
+def canteen(request):
+    return render(request, 'canteen.html')

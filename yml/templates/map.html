@@ -8,10 +8,27 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no">
     <style>
-      #right-panel {
+      #floating-panel {
+        position: absolute;
+        top: 10px;
+        right: 0%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
         font-family: 'Roboto','sans-serif';
         line-height: 30px;
         padding-left: 10px;
+      }
+      .ui-select
+      {
+        text-align: center;
+        /* 加border只是为了看到边框*/
+        border:solid 1px;
+      }
+      #right-panel {
+        font-family: 'Roboto','sans-serif';
       }
 
       #right-panel select, #right-panel input {
@@ -20,6 +37,7 @@
 
       #right-panel select {
         width: 100%;
+        height: 30%;
       }
 
       #right-panel i {
@@ -31,16 +49,12 @@
         padding: 0;
       }
       #map {
-        height: 100%;
         float: left;
         width: 100%;
-        height: 100%;
+        height: 70%;
       }
       #right-panel {
-        margin: 20px;
-        border-width: 2px;
         width: 100%;
-        height: 400px;
         float: left;
         text-align: left;
         padding-top: 0;
@@ -48,15 +62,20 @@
       #directions-panel {
         margin-top: 10px;
         background-color: #FFEE77;
-        padding: 10px;
       }
     </style>
   </head>
   <body>
+    <div id="floating-panel">
+      <button onclick="{location.href='/canteen'}">校内美食</button>
+      <button onclick="{location.href='/activity'}">今日校园活动</button>
+      <button onclick="{location.href='/bashroom'}">寻找附近的洗手间</button>
+    </div>>
     <div id="map"></div>
     <div id="right-panel">
     <div>
-    <b>Start:</b>
+    <center><b>Start:</b></center>>
+    <div class="ui-select">
     <select id="start">
       <option value="present_point">当前位置</option>
       <option value="erxiaomen">二校门</option>
@@ -72,7 +91,6 @@
     </select>
     <br>
     <b>Waypoints:</b> <br>
-    <i>(Ctrl+Click or Cmd+Click for multiple selection)</i> <br>
     <select multiple id="waypoints">
       <option value="erxiaomen">二校门</option>
       <option value="dalitang">大礼堂</option>
@@ -99,6 +117,7 @@
       <option value="wanrenshitang">万人食堂</option>
       <option value="zhulou">主楼</option>
     </select>
+    </div>>
     <br>
       <input type="submit" id="submit">
     </div>
@@ -130,25 +149,25 @@
         var latlng_wanrenshitang = new google.maps.LatLng(uluru_wanrenshitang.lat,uluru_wanrenshitang.lng);
         var uluru_zhulou = {lat: 40.0018265, lng: 116.3321044};//1
         var latlng_zhulou = new google.maps.LatLng(uluru_zhulou.lat,uluru_zhulou.lng);
-        var infoWindow_erxiaomen = new google.maps.InfoWindow({map:map,content:"二校门"});
+        var infoWindow_erxiaomen = new google.maps.InfoWindow({map:map,content:"<a href = '/list/spot/1'>二校门</a>"});
             infoWindow_erxiaomen.setPosition(uluru_erxiaomen);
-        var infoWindow_zhulou = new google.maps.InfoWindow({map:map,content:"主楼"});
+        var infoWindow_zhulou = new google.maps.InfoWindow({map:map,content:"<a href = '/list/spot/2'>主楼</a>"});
             infoWindow_zhulou.setPosition(uluru_zhulou);
-        var infoWindow_dalitang = new google.maps.InfoWindow({map:map,content:"大礼堂"});
+        var infoWindow_dalitang = new google.maps.InfoWindow({map:map,content:"<a href = '/list/spot/3'>大礼堂</a>"});
             infoWindow_dalitang.setPosition(uluru_dalitang);
-        var infoWindow_xinqhxt = new google.maps.InfoWindow({map:map,content:"新清华学堂"});
+        var infoWindow_xinqhxt = new google.maps.InfoWindow({map:map,content:"<a href = '/list/spot/4'>新清华学堂</a>"});
             infoWindow_xinqhxt.setPosition(uluru_xinqhxt);
-        var infoWindow_gzt = new google.maps.InfoWindow({map:map,content:"工字厅"});
+        var infoWindow_gzt = new google.maps.InfoWindow({map:map,content:"<a href = '/list/spot/5'>工字厅</a>"});
             infoWindow_gzt.setPosition(uluru_gzt);
-        var infoWindow_hetang = new google.maps.InfoWindow({map:map,content:"荷塘"});
+        var infoWindow_hetang = new google.maps.InfoWindow({map:map,content:"<a href = '/list/spot/6'>荷塘</a>"});
             infoWindow_hetang.setPosition(uluru_hetang);
-        var infoWindow_zongti = new google.maps.InfoWindow({map:map,content:"综合体育馆"});
+        var infoWindow_zongti = new google.maps.InfoWindow({map:map,content:"<a href = '/list/spot/7'>综合体育馆</a>"});
             infoWindow_zongti.setPosition(uluru_zongti);
-        var infoWindow_tushuguan = new google.maps.InfoWindow({map:map,content:"图书馆"});
+        var infoWindow_tushuguan = new google.maps.InfoWindow({map:map,content:"<a href = '/list/spot/8'>图书馆</a>"});
             infoWindow_tushuguan.setPosition(uluru_tushuguan);
-        var infoWindow_ximen = new google.maps.InfoWindow({map:map,content:"西门"});
+        var infoWindow_ximen = new google.maps.InfoWindow({map:map,content:"<a href = '/list/spot/9'>西门</a>"});
             infoWindow_ximen.setPosition(uluru_ximen);
-        var infoWindow_wanrenshitang = new google.maps.InfoWindow({map:map,content:"万人食堂"});
+        var infoWindow_wanrenshitang = new google.maps.InfoWindow({map:map,content:"<a href = '/list/spot/10'>万人食堂</a>"});
             infoWindow_wanrenshitang.setPosition(uluru_wanrenshitang);
         var marker_erxiaomen = new google.maps.Marker({
           position: uluru_erxiaomen,

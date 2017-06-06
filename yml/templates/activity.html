@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        width: 100%;
+        height: 100%;
+        background-color: grey;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var uluru_activity1 = {lat: 40.009938, lng: 116.329521};//
+        var uluru_activity2 = {lat: 40.0025557, lng: 116.3256287};//
+        var uluru_activity3 = {lat: 40.005722, lng: 116.332214};//
+        var uluru_activity4 = {lat: 40.001617, lng: 116.329377};//
+        var uluru_activity5 = {lat: 40.0017933, lng: 116.3304535};//
+        var uluru_activity6 = {lat: 39.9995165, lng: 116.3290746};//
+        var uluru_activity7 = {lat: 40.005590, lng: 116.320787};//
+        var uluru_activity8 = {lat: 40.0118119, lng: 116.3264207};//
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: {lat: 40.001, lng: 116.3245}
+        });
+        var infoWindow_activity1 = new google.maps.InfoWindow({map:map,content:"毕业生音乐节 7:00p.m-10:00p.m"});
+            infoWindow_activity1.setPosition(uluru_activity1);
+        var infoWindow_activity2 = new google.maps.InfoWindow({map:map,content:"计算机系学生节 8:00p.m-11:30p.m"});
+            infoWindow_activity2.setPosition(uluru_activity2);
+        var infoWindow_activity3 = new google.maps.InfoWindow({map:map,content:"马约翰杯田径运动会 1:30p.m-5:00p.m"});
+            infoWindow_activity3.setPosition(uluru_activity3);
+        var infoWindow_activity4 = new google.maps.InfoWindow({map:map,content:"国家交响乐团演出 7:30p.m-9:30p.m"});
+            infoWindow_activity4.setPosition(uluru_activity4);
+        var infoWindow_activity5 = new google.maps.InfoWindow({map:map,content:"南非总统访华第三站 9:00a.m-11:00a.m"});
+            infoWindow_activity5.setPosition(uluru_activity5);
+        var infoWindow_activity6 = new google.maps.InfoWindow({map:map,content:"扎克伯格清华见面会 7:00p.m-9:00p.m"});
+            infoWindow_activity6.setPosition(uluru_activity6);
+        var infoWindow_activity7 = new google.maps.InfoWindow({map:map,content:"首届酒井杯手球比赛 5:00p.m-6:30p.m"});
+            infoWindow_activity7.setPosition(uluru_activity7);
+        var infoWindow_activity8 = new google.maps.InfoWindow({map:map,content:"川香美食节11:30a.m-12:40p.m 5:00p.m-6:40p.m"});
+            infoWindow_activity8.setPosition(uluru_activity8);
+
+        var latlng_activity1 = new google.maps.LatLng(uluru_activity1.lat,uluru_activity1.lng);
+        var latlng_activity2 = new google.maps.LatLng(uluru_activity2.lat,uluru_activity2.lng);
+        var latlng_activity3 = new google.maps.LatLng(uluru_activity3.lat,uluru_activity3.lng);
+        var latlng_activity4 = new google.maps.LatLng(uluru_activity4.lat,uluru_activity4.lng);
+        var latlng_activity5 = new google.maps.LatLng(uluru_activity5.lat,uluru_activity5.lng);
+        var latlng_activity6 = new google.maps.LatLng(uluru_activity6.lat,uluru_activity6.lng);
+        var latlng_activity7 = new google.maps.LatLng(uluru_activity7.lat,uluru_activity7.lng);
+        var latlng_activity8 = new google.maps.LatLng(uluru_activity8.lat,uluru_activity8.lng);
+        var marker_activity1 = new google.maps.Marker({
+          position: uluru_activity1,
+          map: map
+        });
+          var marker_activity2 = new google.maps.Marker({
+          position: uluru_activity2,
+          map: map
+        });
+          var marker_activity3 = new google.maps.Marker({
+          position: uluru_activity3,
+          map: map
+        });
+          var marker_activity4 = new google.maps.Marker({
+          position: uluru_activity4,
+          map: map
+        });
+          var marker_activity5 = new google.maps.Marker({
+          position: uluru_activity5,
+          map: map
+        });
+          var marker_activity6 = new google.maps.Marker({
+          position: uluru_activity6,
+          map: map
+        });
+          var marker_activity7 = new google.maps.Marker({
+          position: uluru_activity7,
+          map: map
+        });
+        var marker_activity8 = new google.maps.Marker({
+          position: uluru_activity8,
+          map: map
+        });
+        var present_point;
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        directionsDisplay.setMap(map);
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            var infoWindow = new google.maps.InfoWindow({map:map,content:"you are here"});
+            infoWindow.setPosition(pos);
+            map.setCenter(pos);
+            var marker_here = new google.maps.Marker({
+              position: pos,
+              map: map
+            });
+            var latlgn_present = new google.maps.LatLng(pos.lat,pos.lng);
+            present_point = latlgn_present;
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+        google.maps.event.addListener(marker_activity1,'click', function() {
+          calculateAndDisplayRoute(directionsService, directionsDisplay,present_point,latlng_activity1);
+        });
+          google.maps.event.addListener(marker_activity2,'click', function() {
+          calculateAndDisplayRoute(directionsService, directionsDisplay,present_point,latlng_activity2);
+        });
+          google.maps.event.addListener(marker_activity3,'click', function() {
+          calculateAndDisplayRoute(directionsService, directionsDisplay,present_point,latlng_activity3);
+        });
+          google.maps.event.addListener(marker_activity4,'click', function() {
+          calculateAndDisplayRoute(directionsService, directionsDisplay,present_point,latlng_activity4);
+        });
+          google.maps.event.addListener(marker_activity5,'click', function() {
+          calculateAndDisplayRoute(directionsService, directionsDisplay,present_point,latlng_activity5);
+        });
+          google.maps.event.addListener(marker_activity6,'click', function() {
+          calculateAndDisplayRoute(directionsService, directionsDisplay,present_point,latlng_activity6);
+        });
+          google.maps.event.addListener(marker_activity7,'click', function() {
+          calculateAndDisplayRoute(directionsService, directionsDisplay,present_point,latlng_activity7);
+        });
+          google.maps.event.addListener(marker_activity8,'click', function() {
+          calculateAndDisplayRoute(directionsService, directionsDisplay,present_point,latlng_activity8);
+        });
+      }
+
+      function calculateAndDisplayRoute(directionsService, directionsDisplay,origin,destination) {
+        directionsService.route({
+          origin: origin,
+          destination: destination,
+          travelMode: 'WALKING',
+        }, function(response, status) {
+          if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+      }
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBir98xXehuI48KdyuGFQiay4r-39UOT28&callback=initMap">
+    </script>
+  </body>
+</html>

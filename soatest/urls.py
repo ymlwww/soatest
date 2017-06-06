@@ -26,5 +26,8 @@ urlpatterns = [
     url(r'^list/$', yml_views.list, name='list'), 
     url(r'^$', yml_views.index),
     url(r'^map/', yml_views.map),
+    url(r'^bashroom/', yml_views.bashroom),
+    url(r'^activity/', yml_views.activity),
+    url(r'^canteen/', yml_views.canteen),
     url(r'^list/spot/(\d+)/$', yml_views.item, name='item'),
 ]
