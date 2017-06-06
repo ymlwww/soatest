@@ -1,13 +1,13 @@
 from __future__ import unicode_literals
 #coding:utf-8
 from django.db import models
-"""
+
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.auth.models import User
 
 #likes number model
-class Likes(models.Model):
+class Zans(models.Model):
 	#content type
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
@@ -15,7 +15,6 @@ class Likes(models.Model):
         ct_field="content_type",
         fk_field="object_id"
     )
-    #content_object = generic.GenericForeignKey('content_type', 'object_id')
 
     #likes number
     likes_num = models.IntegerField(default = 0)
@@ -24,12 +23,11 @@ class Likes(models.Model):
         return u'%s:%s(%s)' % (self.content_type, self.object_id, self.likes_num)
 
 #likes detail recode
-class LikesDetail(models.Model):
-    likes = models.ForeignKey(Likes)
+class ZanDetail(models.Model):
+    likes = models.ForeignKey(Zans)
     user = models.ForeignKey(User)
     is_like = models.BooleanField(default = False)
     pub_date = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering=['-pub_date']
-        """
