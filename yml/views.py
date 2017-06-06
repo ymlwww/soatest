@@ -23,7 +23,7 @@ def item(request,a):
     texturl = "http://13.65.151.139:8000/static/text/"+a+".txt"
     text = urllib2.urlopen(texturl).read()
     print text
-    return render(request, 'item.html', {'result': c,'spotname': name[c-1],'musicurl':musicurl,'imgurl':imgurl,'text',text})
+    return render(request, 'item.html', {'result': c,'spotname': name[c-1],'musicurl':musicurl,'imgurl':imgurl,'text':text})
 
 def map(request):
     return render(request, 'map.html')    
