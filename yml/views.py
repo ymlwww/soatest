@@ -24,15 +24,32 @@ def deliver(request):
     """Detects labels in the file located in Google Cloud Storage or on the
     Web."""
     vision_client = vision.Client()
-    uri = "http://13.65.151.139:8000/static/img/7.jpg"
+    uri = "http://13.65.151.139:8000/static/img/8.jpg"
     image = vision_client.image(source_uri=uri)
     landmarks = image.detect_landmarks()
     for landmark in landmarks:
         print("landmark")
         print landmark
         print(landmark.description)
-        return HttpResponse(landmark.description)
-    return HttpResponse("nothing") 
+
+    uri = "http://13.65.151.139:8000/static/img/9.jpg"
+    image = vision_client.image(source_uri=uri)
+    landmarks = image.detect_landmarks()
+    for landmark in landmarks:
+        print("landmark")
+        print landmark
+        print(landmark.description)
+        
+    
+        vision_client = vision.Client()
+    uri = "http://13.65.151.139:8000/static/img/10.jpg"
+    image = vision_client.image(source_uri=uri)
+    landmarks = image.detect_landmarks()
+    for landmark in landmarks:
+        print("landmark")
+        print landmark
+        print(landmark.description)
+    return HttpResponse("over") 
 
 
     
