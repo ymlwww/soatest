@@ -28,11 +28,11 @@ def deliver(request):
     vision_client = vision.Client()
     uri = "http://13.65.151.139:8000/static/img/1.jpg"
     image = vision_client.image(source_uri=uri)
-    landmarks = image.detect_landmarks()
-    for landmark in landmarks:
-        print("landmark")
-        print landmark
-        print(landmark.description)
+    # landmarks = image.detect_landmarks()
+    # for landmark in landmarks:
+    #     print("landmark")
+    #     print landmark
+    #     print(landmark.description)
     web = image.detect_web()
     print web
     return(HttpResponse(web))
