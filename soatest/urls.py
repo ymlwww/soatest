@@ -29,5 +29,4 @@ urlpatterns = [
     url(r'^activity/', yml_views.activity),
     url(r'^canteen/', yml_views.canteen),
     url(r'^list/spot/(\d+)/$', yml_views.item, name='item'),
-    url(r'^comment/post/$', yml_views.comment_post, name='comment_post'),
 ]
