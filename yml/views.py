@@ -32,6 +32,7 @@ def deliver(request):
         print landmark
         print(landmark.description)
         return HttpResponse(landmark.description)
+    return HttpResponse("nothing") 
 
 
     
