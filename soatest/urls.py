@@ -13,15 +13,18 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url,include
+from django.conf.urls import url
+from django.conf.urls import include
 from django.contrib import admin
 from yml import views as yml_views
+from likes import views as likes_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^likes/likes_change$',likes_views.likes_change,name='likes_change'),
+    url(r'^likes/likes_nums$',likes_views.likes_nums,name='likes_nums'),
     url(r'^list/$', yml_views.list, name='list'), 
     url(r'^$', yml_views.index),
     url(r'^map/', yml_views.map),
     url(r'^list/spot/(\d+)/$', yml_views.item, name='item'),
-    url(r'^likes/', include('likes.urls')),
 ]
