@@ -50,7 +50,7 @@
         navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
         window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
 
-        var exArray = []; //存储设备源ID#}
+/*        var exArray = []; //存储设备源ID#}
         MediaStreamTrack.getSources(function (sourceInfos) {
             for (var i = 0; i != sourceInfos.length; ++i) {
                 var sourceInfo = sourceInfos[i];
@@ -59,16 +59,16 @@
                     exArray.push(sourceInfo.id);
                 }
             }
-        });
+        });*/
 
         function getMedia() {
             if (navigator.getUserMedia) {
                 navigator.getUserMedia({
-                    'video': {
+/*                    'video': {
                        'optional': [{
                             'sourceId': exArray[1] //0为前置摄像头，1为后置#}
                         }]
-                    },
+                    },*/
                     'audio':false
                 }, successFunc, errorFunc);    //success是获取成功的回调函数
             }
