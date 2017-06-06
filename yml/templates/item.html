@@ -201,14 +201,15 @@
 				}
 				xmlhttp.open("GET",url,true);
 				xmlhttp.send();
-			}else{
+			}else
+			{
 				$(this).html("<img src='/static/img/yizan.png' id='praise-img' class='animation' />");
 				praise_txt.addClass("hover");
 				text_box.show().html("<em class='add-animation'>+1</em>");
 				$(".add-animation").addClass("hover");
 				num +=1;
 				praise_txt.text(num);
-				var url = "http://13.65.151.139/addzan/"+ {{ result }}+"/";  
+				var url = "http://13.65.151.139:8000/addzan/"+ {{ result }}+"/";  
 				var xmlhttp;
 				if (window.XMLHttpRequest)
 				{// code for IE7+, Firefox, Chrome, Opera, Safari
