@@ -23,88 +23,90 @@ def map(request):
 def deliver(request):
     """Detects labels in the file located in Google Cloud Storage or on the
     Web."""
-    uri ="http://13.65.151.139:8000/static/img/1.jpg"
-    vision_client = vision.Client()
-    image = vision_client.image(source_uri=uri)
-    landmarks = image.detect_landmarks()
+    for i in 10:
+        uri = "http://13.65.151.139:8000/static/img/"+(string)i+".jpg"
+        vision_client = vision.Client()
+        image = vision_client.image(source_uri=uri)
+        landmarks = image.detect_landmarks()
+        for landmark in landmarks:
+            print("landmark")
+            print landmark
+            print(landmark.description)
 
 
-    for landmark in landmarks:
-        print("landmark")
-        print landmark
-        print(landmark.description)
-    uri ="http://13.65.151.139:8000/static/img/2.jpg"
-    image = vision_client.image(source_uri=uri)
-    landmarks = image.detect_landmarks()
+    
+    # uri ="http://13.65.151.139:8000/static/img/2.jpg"
+    # image = vision_client.image(source_uri=uri)
+    # landmarks = image.detect_landmarks()
 
-    for landmark in landmarks:
-        print("landmark")
-        print landmark
-        print(landmark.description)
-    uri ="http://13.65.151.139:8000/static/img/3.jpg"
-    image = vision_client.image(source_uri=uri)
-    landmarks = image.detect_landmarks()
+    # for landmark in landmarks:
+    #     print("landmark")
+    #     print landmark
+    #     print(landmark.description)
+    # uri ="http://13.65.151.139:8000/static/img/3.jpg"
+    # image = vision_client.image(source_uri=uri)
+    # landmarks = image.detect_landmarks()
 
-    for landmark in landmarks:
-        print("landmark")
-        print landmark
-        print(landmark.description)
-    uri ="http://13.65.151.139:8000/static/img/4.jpg"
-    image = vision_client.image(source_uri=uri)
-    landmarks = image.detect_landmarks()
+    # for landmark in landmarks:
+    #     print("landmark")
+    #     print landmark
+    #     print(landmark.description)
+    # uri ="http://13.65.151.139:8000/static/img/4.jpg"
+    # image = vision_client.image(source_uri=uri)
+    # landmarks = image.detect_landmarks()
 
-    for landmark in landmarks:
-        print("landmark")
-        print landmark
-        print(landmark.description)
-    uri ="http://13.65.151.139:8000/static/img/5.jpg"
-    image = vision_client.image(source_uri=uri)
-    landmarks = image.detect_landmarks()
+    # for landmark in landmarks:
+    #     print("landmark")
+    #     print landmark
+    #     print(landmark.description)
+    # uri ="http://13.65.151.139:8000/static/img/5.jpg"
+    # image = vision_client.image(source_uri=uri)
+    # landmarks = image.detect_landmarks()
 
-    for landmark in landmarks:
-        print("landmark")
-        print landmark
-        print(landmark.description)
-    uri ="http://13.65.151.139:8000/static/img/6.jpg"
-    image = vision_client.image(source_uri=uri)
-    landmarks = image.detect_landmarks()
+    # for landmark in landmarks:
+    #     print("landmark")
+    #     print landmark
+    #     print(landmark.description)
+    # uri ="http://13.65.151.139:8000/static/img/6.jpg"
+    # image = vision_client.image(source_uri=uri)
+    # landmarks = image.detect_landmarks()
 
-    for landmark in landmarks:
-        print("landmark")
-        print landmark
-        print(landmark.description)
-    uri ="http://13.65.151.139:8000/static/img/7.jpg"
-    image = vision_client.image(source_uri=uri)
-    landmarks = image.detect_landmarks()
+    # for landmark in landmarks:
+    #     print("landmark")
+    #     print landmark
+    #     print(landmark.description)
+    # uri ="http://13.65.151.139:8000/static/img/7.jpg"
+    # image = vision_client.image(source_uri=uri)
+    # landmarks = image.detect_landmarks()
 
-    for landmark in landmarks:
-        print("landmark")
-        print landmark
-        print(landmark.description)
-    uri ="http://13.65.151.139:8000/static/img/8.jpg"
-    image = vision_client.image(source_uri=uri)
-    landmarks = image.detect_landmarks()
+    # for landmark in landmarks:
+    #     print("landmark")
+    #     print landmark
+    #     print(landmark.description)
+    # uri ="http://13.65.151.139:8000/static/img/8.jpg"
+    # image = vision_client.image(source_uri=uri)
+    # landmarks = image.detect_landmarks()
 
-    for landmark in landmarks:
-        print("landmark")
-        print landmark
-        print(landmark.description)
-    uri ="http://13.65.151.139:8000/static/img/9.jpg"
-    image = vision_client.image(source_uri=uri)
-    landmarks = image.detect_landmarks()
+    # for landmark in landmarks:
+    #     print("landmark")
+    #     print landmark
+    #     print(landmark.description)
+    # uri ="http://13.65.151.139:8000/static/img/9.jpg"
+    # image = vision_client.image(source_uri=uri)
+    # landmarks = image.detect_landmarks()
 
-    for landmark in landmarks:
-        print("landmark")
-        print landmark
-        print(landmark.description)
-    uri ="http://13.65.151.139:8000/static/img/10.jpg"
-    image = vision_client.image(source_uri=uri)
-    landmarks = image.detect_landmarks()
+    # for landmark in landmarks:
+    #     print("landmark")
+    #     print landmark
+    #     print(landmark.description)
+    # uri ="http://13.65.151.139:8000/static/img/10.jpg"
+    # image = vision_client.image(source_uri=uri)
+    # landmarks = image.detect_landmarks()
 
-    for landmark in landmarks:
-        print("landmark")
-        print landmark
-        print(landmark.description)
+    # for landmark in landmarks:
+    #     print("landmark")
+    #     print landmark
+    #     print(landmark.description)
     return HttpResponse(landmark.description)
 
     
