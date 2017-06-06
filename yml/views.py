@@ -29,8 +29,9 @@ def deliver(request):
     landmarks = image.detect_landmarks()
     for landmark in landmarks:
         print("landmark")
-        print  landmark
+        print landmark
         print(landmark.description)
+        return HttpResponse(landmark.description)
 
 
     
@@ -106,6 +107,5 @@ def deliver(request):
     #     print("landmark")
     #     print landmark
     #     print(landmark.description)
-    return HttpResponse(landmark.description)
-
+    
     
