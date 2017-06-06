@@ -33,8 +33,9 @@ def deliver(request):
         print("landmark")
         print landmark
         print(landmark.description)
-        return (HttpResponse(dict_for_vision(landmark.description)))
-    return(HttpResponse("0"))
+        a = dict_for_vision(landmark.description)
+        return HttpResponse(a)
+    return HttpResponse("0") 
 
 
     
