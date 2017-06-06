@@ -106,7 +106,7 @@
 
 		<div class="praise">
 			<span id="praise"><img src="{% static "img/zan.png" %}" id="praise-img" /></span>
-			<span id="praise-txt">1455</span>
+			<span id="praise-txt">{{ zan }}</span>
 			<span id="add-num"><em>+1</em></span>
 		</div>
 
@@ -139,7 +139,6 @@
 													<a href="javascript:;" class="removeBlock">删除</a>
 													<a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a>
 													<span class="pull-left date-dz-line">|</span>
-													<a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">666</i>)</a>
 												</div>
 											</div>
 											<div class="hf-list-con"></div>
@@ -183,6 +182,25 @@
 				$(".add-animation").removeClass("hover");
 				num -=1;
 				praise_txt.text(num)
+				var url = "http://127.0.0.1:8000/delzan/"+ {{ result }}+"/";  
+				var xmlhttp;
+				if (window.XMLHttpRequest)
+				{// code for IE7+, Firefox, Chrome, Opera, Safari
+					xmlhttp=new XMLHttpRequest();
+				}
+				else
+				{// code for IE6, IE5
+					xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				xmlhttp.onreadystatechange=function()
+				{
+				if (xmlhttp.readyState==4 && xmlhttp.status==200)
+					{
+						document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+					}
+				}
+				xmlhttp.open("GET",url,true);
+				xmlhttp.send();
 			}else{
 				$(this).html("<img src='/static/img/yizan.png' id='praise-img' class='animation' />");
 				praise_txt.addClass("hover");
@@ -190,6 +208,25 @@
 				$(".add-animation").addClass("hover");
 				num +=1;
 				praise_txt.text(num)
+				var url = "http://127.0.0.1:8000/addzan/"+ {{ result }}+"/";  
+				var xmlhttp;
+				if (window.XMLHttpRequest)
+				{// code for IE7+, Firefox, Chrome, Opera, Safari
+					xmlhttp=new XMLHttpRequest();
+				}
+				else
+				{// code for IE6, IE5
+					xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				xmlhttp.onreadystatechange=function()
+				{
+				if (xmlhttp.readyState==4 && xmlhttp.status==200)
+					{
+						document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+					}
+				}
+				xmlhttp.open("GET",url,true);
+				xmlhttp.send();
 			}
 		});
 	})
@@ -233,7 +270,7 @@
 			var oSize = $(this).siblings('.flex-text-wrap').find('.comment-input').val();
 			console.log(oSize);
 			//动态创建评论模块
-			oHtml = '<div class="comment-show-con clearfix"><div class="comment-show-con-img pull-left"><img src="/static/img/header-img-comment_03.png" alt=""></div> <div class="comment-show-con-list pull-left clearfix"><div class="pl-text clearfix"> <a href="#" class="comment-size-name">David Beckham : </a> <span class="my-pl-con">&nbsp;'+ oSize +'</span> </div> <div class="date-dz"> <span class="date-dz-left pull-left comment-time">'+now+'</span> <div class="date-dz-right pull-right comment-pl-block"><a href="javascript:;" class="removeBlock">删除</a> <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a> <span class="pull-left date-dz-line">|</span> <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">666</i>)</a> </div> </div><div class="hf-list-con"></div></div> </div>';
+			oHtml = '<div class="comment-show-con clearfix"><div class="comment-show-con-img pull-left"><img src="/static/img/header-img-comment_03.png" alt=""></div> <div class="comment-show-con-list pull-left clearfix"><div class="pl-text clearfix"> <a href="#" class="comment-size-name">David Beckham : </a> <span class="my-pl-con">&nbsp;'+ oSize +'</span> </div> <div class="date-dz"> <span class="date-dz-left pull-left comment-time">'+now+'</span> <div class="date-dz-right pull-right comment-pl-block"><a href="javascript:;" class="removeBlock">删除</a> <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a> <span class="pull-left date-dz-line">|</span> </div> </div><div class="hf-list-con"></div></div> </div>';
 			if(oSize.replace(/(^\s*)|(\s*$)/g, "") != ''){
 				$(this).parents('.reviewArea ').siblings('.comment-show').prepend(oHtml);
 				$(this).siblings('.flex-text-wrap').find('.comment-input').prop('value','').siblings('pre').find('span').text('');
@@ -315,7 +352,7 @@
 						oHf = data.hfName;
 					});
 
-					var oHtml = '<div class="all-pl-con"><div class="pl-text hfpl-text clearfix"><a href="#" class="comment-size-name">我的名字 : </a><span class="my-pl-con">'+oAt+'</span></div><div class="date-dz"> <span class="date-dz-left pull-left comment-time">'+now+'</span> <div class="date-dz-right pull-right comment-pl-block"> <a href="javascript:;" class="removeBlock">删除</a> <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a> <span class="pull-left date-dz-line">|</span> <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">666</i>)</a> </div> </div></div>';
+					var oHtml = '<div class="all-pl-con"><div class="pl-text hfpl-text clearfix"><a href="#" class="comment-size-name">我的名字 : </a><span class="my-pl-con">'+oAt+'</span></div><div class="date-dz"> <span class="date-dz-left pull-left comment-time">'+now+'</span> <div class="date-dz-right pull-right comment-pl-block"> <a href="javascript:;" class="removeBlock">删除</a> <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a> <span class="pull-left date-dz-line">|</span> </div> </div></div>';
 					oThis.parents('.hf-con').parents('.comment-show-con-list').find('.hf-list-con').css('display','block').prepend(oHtml) && oThis.parents('.hf-con').siblings('.date-dz-right').find('.pl-hf').addClass('hf-con-block') && oThis.parents('.hf-con').remove();
 				});
 			}

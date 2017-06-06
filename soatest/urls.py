@@ -17,13 +17,12 @@ from django.conf.urls import url
 from django.conf.urls import include
 from django.contrib import admin
 from yml import views as yml_views
-from likes import views as likes_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^likes/likes_change$',likes_views.likes_change,name='likes_change'),
-    url(r'^likes/likes_nums$',likes_views.likes_nums,name='likes_nums'),
     url(r'^list/$', yml_views.list, name='list'), 
+    url(r'^addzan/(\d+)/$', yml_views.addzan),
+    url(r'^delzan/(\d+)/$', yml_views.delzan),
     url(r'^$', yml_views.index),
     url(r'^map/', yml_views.map),
     url(r'^bashroom/', yml_views.bashroom),

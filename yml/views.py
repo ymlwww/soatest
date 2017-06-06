@@ -2,11 +2,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect,JsonResponse
 from django.urls import reverse
+from django.contrib.contenttypes.models import ContentType
 import urllib2
 import json
 import os
 import argparse
 import io
+global zans
+zans=[0,0,0,0,0,0,0,0,0,0]
 
 def index(request):
     return render(request, 'index.html')
@@ -22,8 +25,22 @@ def item(request,a):
     imgurl = "http://13.65.151.139:8000/static/img/"+a+".jpg"
     texturl = "http://13.65.151.139:8000/static/text/"+a+".txt"
     text = urllib2.urlopen(texturl).read()
-    print text
-    return render(request, 'item.html', {'result': c,'spotname': name[c-1],'musicurl':musicurl,'imgurl':imgurl,'text':text})
+    global zans
+    zan = zans[c-1]
+    return render(request, 'item.html', {'result': c,'spotname': name[c-1],'musicurl':musicurl,'imgurl':imgurl,'text':text,'zan':zan})
+
+def addzan(request,a):
+    c = int(a)
+    global zans
+    zans [c-1] = zans[c-1]+1
+    print "yes"
+    return HttpResponse("SUCCESS")
+
+def delzan(request,a):
+    c = int(a)
+    global zans
+    zans [c-1] = zans[c-1]-1
+    return HttpResponse("SUCCESS")
 
 def map(request):
     return render(request, 'map.html')    
@@ -37,3 +54,8 @@ def activity(request):
 
 def canteen(request):
     return render(request, 'canteen.html')
+
+
+
+
+
