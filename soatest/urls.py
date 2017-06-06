@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^$', yml_views.index),
     url(r'^map/', yml_views.map),
     url(r'^list/spot/(\d+)/$', yml_views.item, name='item'),
+    url(r'^likes/', include('likes.urls')),
 ]
