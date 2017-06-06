@@ -15,7 +15,7 @@ body {
   font-family: "Raleway", Arial, sans-serif;
   line-height: 1.6;
   font-size: 16px;
-  background: #848484;
+  background: #121212;
   color: #848484;
   font-weight: 300;
   overflow-x: hidden;
@@ -23,6 +23,8 @@ body {
 body.fh5co-offcanvas {
   overflow: hidden;
 }
+
+
 
 @media only screen and (-webkit-min-device-pixel-ratio:1.25), (min-resolution:120dpi) {
     html {
@@ -103,7 +105,7 @@ figure {
   bottom: 0;
   right: 0;
   z-index: 1;
-  background: #fff;
+  background: rgba(0, 0, 0, 0.8);
 }
 
 .fh5co-overlay {
@@ -114,7 +116,7 @@ figure {
   bottom: 0;
   right: 0;
   z-index: 1;
-  background: #fff;
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .fh5co-cover {
@@ -1014,7 +1016,7 @@ figure {
 }
 
 .border-bottom {
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .lead {
