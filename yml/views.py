@@ -8,7 +8,7 @@ import argparse
 import io
 from google.cloud import vision
 
-dict_for_vision = {"Old Gate of Tsinghua University":"1","Tsinghua University Central Main Building":"2","Jinchun Garden":"6"}
+dict_for_vision = {"Old Gate of Tsinghua University":"1","Tsinghua University Central Main Building":"2","Jinchun Garden":"6","Tsinghua University":"0"}
 def index(request):
     return render(request, 'index.html')
 
@@ -34,7 +34,8 @@ def deliver(request):
         print landmark
         print(landmark.description)
         a = dict_for_vision[landmark.description]
-        return HttpResponse(a)
+        if a is not "0":
+            return HttpResponse(a)
     return HttpResponse("<center>sorry~ google vision can not dectect what it is~</center><br/><a href = 13.65.151.139:8000>click to return to the homepage</a>") 
 
 
