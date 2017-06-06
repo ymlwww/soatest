@@ -124,28 +124,6 @@
 									<a href="javascript:;" class="plBtn">评论</a>
 								</div>
 								<!--评论区域 end-->
-								<!--回复区域 begin-->
-								<div class="comment-show">
-									<div class="comment-show-con clearfix">
-										<div class="comment-show-con-img pull-left"><img src="{% static 'img/header-img-comment_03.png' %}" alt=""></div>
-										<div class="comment-show-con-list pull-left clearfix">
-											<div class="pl-text clearfix">
-												<a href="#" class="comment-size-name">张三 : </a>
-												<span class="my-pl-con">&nbsp;来啊 造作啊!</span>
-											</div>
-											<div class="date-dz">
-												<span class="date-dz-left pull-left comment-time">2017-5-2 11:11:39</span>
-												<div class="date-dz-right pull-right comment-pl-block">
-													<a href="javascript:;" class="removeBlock">删除</a>
-													<a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a>
-													<span class="pull-left date-dz-line">|</span>
-												</div>
-											</div>
-											<div class="hf-list-con"></div>
-										</div>
-									</div>
-								</div>
-
 								<div id="lv-container" data-id="city" data-uid="MTAyMC8yODk4Ny81NTU2">
 									<script type="text/javascript">
 										(function(d, s) {
@@ -162,28 +140,8 @@
 											</script>
 								<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
 								</div>
-
-								<form action="{% url 'comment_post' %}" method="post">
-									{% csrf_token %}
-									<p>{{ comment_form.author }}
-									<label for="author">Name (required)</label></p>
-
-									<p>{{ comment_form.email }}
-									<label for="email">Email (Will NOT be published) (required)</label></p>
-
-									<p>{{ comment_form.url }}
-									<label for="url">URL</label></p>
-
-									<p>{{ comment_form.comment }}</p>
-
-									<p>
-										{{ comment_form.article }}
-										<input name="submit" type="submit" id="submit" tabindex="5" value="Submit" class="button" />
-									</p>
-								</form>
-								<!--回复区域 end-->
-								</div>
-							<p>Copyright &copy; 2017,yml.All rights reserved.</p>
+								<p>Copyright &copy; 2017,yml.All rights reserved.</p>
+							</div>
 						</div>
 					</div>
 				</div>
