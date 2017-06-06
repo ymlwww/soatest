@@ -23,9 +23,9 @@ def map(request):
 def deliver(request):
     """Detects labels in the file located in Google Cloud Storage or on the
     Web."""
+    vision_client = vision.Client()
     for i in range(1,10):
         uri = "http://13.65.151.139:8000/static/img/"+str(i)+".jpg"
-        vision_client = vision.Client()
         image = vision_client.image(source_uri=uri)
         landmarks = image.detect_landmarks()
         for landmark in landmarks:
