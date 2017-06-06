@@ -50,7 +50,7 @@ def deliver(request):
     file = open('yml/static/img/'+str(face_num[0]%1000)+'.png', 'wb')
     file.write(img_data)
     file.close()
-    uri= "http://13.65.151.139:8000/static/img/"+str(face_num[0]%1000)+'.png')
+    uri= "http://13.65.151.139:8000/static/img/"+str(face_num[0]%1000)+'.png'
     vision_client = vision.Client()
     image = vision_client.image(source_uri=uri)
     landmarks = image.detect_landmarks()
