@@ -137,10 +137,12 @@
             var latlgn_present = new google.maps.LatLng(pos.lat,pos.lng);
             present_point = latlgn_present;
           }, function() {
+             var infoWindow = new google.maps.InfoWindow({map:map,content:"sorry can't find your location"});
             handleLocationError(true, infoWindow, map.getCenter());
           });
         } else {
           // Browser doesn't support Geolocation
+          var infoWindow = new google.maps.InfoWindow({map:map,content:"your brower dosen't support goalocation"});
           handleLocationError(false, infoWindow, map.getCenter());
         }
         google.maps.event.addListener(marker_washroom1,'click', function() {
