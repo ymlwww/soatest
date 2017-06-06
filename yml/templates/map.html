@@ -125,10 +125,6 @@
     </div>
     <script>
       function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 15,
-          center: uluru_erxiaomen
-        });
         var uluru_erxiaomen = {lat: 40.001, lng: 116.3245};
         var latlng_erxiaomen = new google.maps.LatLng(uluru_erxiaomen.lat,uluru_erxiaomen.lng);
         var uluru_dalitang = {lat: 40.003713, lng: 116.324420};//1
@@ -149,6 +145,10 @@
         var latlng_wanrenshitang = new google.maps.LatLng(uluru_wanrenshitang.lat,uluru_wanrenshitang.lng);
         var uluru_zhulou = {lat: 40.0018265, lng: 116.3321044};//1
         var latlng_zhulou = new google.maps.LatLng(uluru_zhulou.lat,uluru_zhulou.lng);
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: uluru_erxiaomen
+        });
         var infoWindow_erxiaomen = new google.maps.InfoWindow({map:map,content:"<a href = '/list/spot/1'>二校门</a>"});
             infoWindow_erxiaomen.setPosition(uluru_erxiaomen);
         var infoWindow_zhulou = new google.maps.InfoWindow({map:map,content:"<a href = '/list/spot/2'>主楼</a>"});
