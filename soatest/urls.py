@@ -22,7 +22,5 @@ urlpatterns = [
     url(r'^list/$', yml_views.list, name='list'), 
     url(r'^$', yml_views.index),
     url(r'^map/', yml_views.map),
-    url(r'^deliver/', yml_views.deliver),
     url(r'^list/spot/(\d+)/$', yml_views.item, name='item'),
-    url(r'^detect',yml_views.detect)
 ]
