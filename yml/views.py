@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect,JsonResponse
 from django.urls import reverse
 from django.contrib.contenttypes.models import ContentType
+from yml.models import CommentForm
 import urllib2
 import json
 import os
