@@ -28,9 +28,9 @@ def deliver(request):
     image = vision_client.image(source_uri=uri)
     landmarks = image.detect_landmarks()
     for landmark in landmarks:
-    print("landmark")
-    print landmark
-    print(landmark.description)
+        print("landmark")
+        print  landmark
+        print(landmark.description)
 
 
     
